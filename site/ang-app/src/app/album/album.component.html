@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Genre</th>
+      <th>Artist</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let album of albums">
+      <td><span>{{album.id}}</span></td>
+      <td><span>{{album.name}}</span></td>
+      <td><span>{{album.year}}</span></td>
+      <td><span>{{album.genre}}</span></td>
+      <td><span>{{album.artistName}}</span></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

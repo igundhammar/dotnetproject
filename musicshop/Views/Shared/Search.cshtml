@@ -1,0 +1,11 @@
+@model List<musicshop.Models.API.Album>
+
+<div class="search">
+    <form asp-action="Index" asp-controller="Album">
+        <p>
+            Album name:
+            <input type="text" name="SearchString">
+            <input type="submit" value="Search">
+        </p>
+    </form>
+</div>

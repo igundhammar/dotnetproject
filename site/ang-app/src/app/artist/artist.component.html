@@ -1,0 +1,20 @@
+<div class="container">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let artist of artists">
+      <td><span>{{artist.name}}</span></td>
+      <button (click)="showAlbums(artist.name)">Show all albums</button>
+    </tr>
+    </tbody>
+    <div class="show">
+      <p *ngFor="let album of albumsOfArtist">
+        {{album.name}}
+      </p>
+    </div>
+  </table>
+</div>
