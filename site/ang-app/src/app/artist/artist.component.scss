@@ -1,0 +1,47 @@
+.artists {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.2em;
+
+  .artistlist {
+    padding: 1em;
+    margin-left: 3em;
+    ul {
+      list-style: none;
+
+      li {
+        margin: 1em 0;
+        text-decoration: underline;
+
+        button {
+          margin: 0 1em;
+          font-size: 1.2rem;
+          border: none;
+          background: transparent;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .show {
+    width: 50%;
+
+    .albumlist {
+      display: flex;
+      margin: 0.5em 0;
+
+      .albumimage {
+        display: flex;
+        margin-left: 0.5em;
+      }
+
+      .albumdata {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5em;
+      }
+    }
+  }
+}

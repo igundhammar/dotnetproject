@@ -11,6 +11,7 @@ export class Artist {
 export class AlbumsOfArtist {
   constructor(
     public name: string,
+    public imagePath: string,
   ) {
   }
 }
@@ -25,6 +26,7 @@ export class ArtistComponent implements OnInit {
 
   artists!: Artist[];
   albumsOfArtist!: AlbumsOfArtist[];
+  imagePath = 'assets/images/riot.jpg';
 
 
 
@@ -41,7 +43,6 @@ export class ArtistComponent implements OnInit {
   getArtists() {
     this.httpClient.get<any>('https://localhost:7240/api/artist').subscribe(
       response => {
-        console.log(response);
         this.artists = response;
       }
     )
@@ -50,7 +51,6 @@ export class ArtistComponent implements OnInit {
   showAlbums(name : string) {
     this.httpClient.get<any>('https://localhost:7240/api/artist/' + name).subscribe(
       response => {
-        console.log(response);
         this.albumsOfArtist = response;
       }
     );

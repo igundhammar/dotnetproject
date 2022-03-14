@@ -1,22 +1,33 @@
 <div class="container">
-  <table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Year</th>
-      <th>Genre</th>
-      <th>Artist</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let album of albums">
-      <td><span>{{album.id}}</span></td>
-      <td><span>{{album.name}}</span></td>
-      <td><span>{{album.year}}</span></td>
-      <td><span>{{album.genre}}</span></td>
-      <td><span>{{album.artistName}}</span></td>
-    </tr>
-    </tbody>
-  </table>
+  <h1>Albums</h1>
+  <div class="form-group">
+    <label for="search-text">Search Text</label>
+    <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+           [(ngModel)]="searchText" placeholder="Enter text to search"
+           autofocus>
+  </div>
+  <div class="search-list">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let album of albums | appFilter: searchText"
+          appHighlight [searchedWord]="searchText" [content]="album.name"
+          [classToApply]="'font-weight-bold'" [setTitle]="true">
+        {{album.name}}
+      </li>
+    </ul>
+  </div>
+  <section class="allalbums">
+    <div class="albumlist" *ngFor="let album of albums">
+      <div class="albumimage">
+        <img [src]="imagePath" width="100" height="100">
+      </div>
+      <div class="albumdata">
+        <div class="data">
+          <p><b>{{album.name}}</b></p>
+          <p>{{album.artistName}}</p>
+          <p>{{album.year}}</p>
+          <p>{{album.genre}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

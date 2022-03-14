@@ -1,20 +1,24 @@
 <div class="container">
-  <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let artist of artists">
-      <td><span>{{artist.name}}</span></td>
-      <button (click)="showAlbums(artist.name)">Show all albums</button>
-    </tr>
-    </tbody>
-    <div class="show">
-      <p *ngFor="let album of albumsOfArtist">
-        {{album.name}}
-      </p>
-    </div>
-  </table>
+  <h1>Artists</h1>
+  <section class="artists">
+    <section class="artistlist">
+     <ul>
+          <li *ngFor="let artist of artists"><span>{{artist.name}}</span>
+            <button (click)="showAlbums(artist.name)">Show all albums</button>
+          </li>
+     </ul>
+    </section>
+    <section class="show">
+      <div class="albumlist" *ngFor="let album of albumsOfArtist">
+        <div class="albumimage">
+          <img [src]="imagePath" width="75" height="75">
+        </div>
+        <div class="albumdata">
+          <div class="data">
+            <p><b>{{album.name}}</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
 </div>

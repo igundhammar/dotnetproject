@@ -7,7 +7,8 @@ export class Album {
   public name: string,
   public year: number,
   public genre: string,
-  public artistName: string
+  public artistName: string,
+  public imagePath: string,
   ) {
 
   }
@@ -19,8 +20,9 @@ export class Album {
   styleUrls: ['./album.component.scss']
 })
 export class AlbumComponent implements OnInit {
-
+  searchText = '';
   albums!: Album[];
+  imagePath = 'assets/images/riot.jpg';
 
   constructor(
     private httpClient: HttpClient
@@ -36,7 +38,6 @@ export class AlbumComponent implements OnInit {
   getAlbums() {
     this.httpClient.get<any>('https://localhost:7240/api/album').subscribe(
       response => {
-        console.log(response);
         this.albums = response;
       }
     )
