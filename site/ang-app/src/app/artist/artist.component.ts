@@ -26,7 +26,6 @@ export class ArtistComponent implements OnInit {
 
   artists!: Artist[];
   albumsOfArtist!: AlbumsOfArtist[];
-  imagePath = 'assets/images/riot.jpg';
 
 
 

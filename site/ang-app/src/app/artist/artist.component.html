@@ -11,7 +11,7 @@
     <section class="show">
       <div class="albumlist" *ngFor="let album of albumsOfArtist">
         <div class="albumimage">
-          <img [src]="imagePath" width="75" height="75">
+          <img src="https://localhost:7240/images/{{album.imagePath}}" width="75" height="75">
         </div>
         <div class="albumdata">
           <div class="data">

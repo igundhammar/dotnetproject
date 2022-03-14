@@ -86,10 +86,16 @@ namespace musicshop.Controllers
                         await album.ImageFile.CopyToAsync(fileStream);
                     }
                 }
+                else
+                {
+                    album.ImagePath = "album.jpg";
+                }
+
                 _context.Add(album);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["Artist"] = new SelectList(_context.Artists, "Name", "Name");
             return View(album);
         }
@@ -107,6 +113,7 @@ namespace musicshop.Controllers
             {
                 return NotFound();
             }
+
             ViewData["Artist"] = new SelectList(_context.Artists, "Name", "Name");
             return View(album);
         }
@@ -116,7 +123,7 @@ namespace musicshop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Year,Genre,ArtistName,ImagePath")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Year,Genre,ArtistName,ImageFile")] Album album)
         {
             if (id != album.Id)
             {
@@ -127,22 +134,45 @@ namespace musicshop.Controllers
             {
                 try
                 {
-                    _context.Update(album);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AlbumExists(album.Id))
+                    if (album.ImageFile != null)
+
                     {
-                        return NotFound();
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileName(album.ImageFile.FileName);
+
+                        album.ImagePath = fileName;
+
+                        string path = Path.Combine(wwwRootPath + "/images/" + fileName);
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await album.ImageFile.CopyToAsync(fileStream);
+                        }
+
+                        _context.Update(album);
+                        await _context.SaveChangesAsync();
                     }
                     else
                     {
-                        throw;
+                        var getAlbum = await _context.Albums
+                            .FirstAsync(m => m.Id == id);
+                        getAlbum.Name = album.Name;
+                        getAlbum.Year = album.Year;
+                        getAlbum.Genre = album.Genre;
+                        getAlbum.ArtistName = album.ArtistName;
+
+                        _context.Update(getAlbum);
+                        await _context.SaveChangesAsync();
                     }
                 }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["Artist"] = new SelectList(_context.Artists, "Name", "Name");
             return View(album);
         }

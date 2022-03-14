@@ -22,7 +22,6 @@ export class Album {
 export class AlbumComponent implements OnInit {
   searchText = '';
   albums!: Album[];
-  imagePath = 'assets/images/riot.jpg';
 
   constructor(
     private httpClient: HttpClient
