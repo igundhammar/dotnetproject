@@ -82,6 +82,15 @@
       <UpToDateCheckInput Remove="Views\Album\Details.cshtml" />
       <UpToDateCheckInput Remove="Views\Album\Edit.cshtml" />
       <UpToDateCheckInput Remove="Views\Album\Index.cshtml" />
+      <UpToDateCheckInput Remove="Views\Album\Create.cshtml" />
+      <UpToDateCheckInput Remove="Views\Album\Delete.cshtml" />
+      <UpToDateCheckInput Remove="Views\Album\Details.cshtml" />
+      <UpToDateCheckInput Remove="Views\Album\Edit.cshtml" />
+      <UpToDateCheckInput Remove="Views\Album\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\images" />
     </ItemGroup>
 
 </Project>

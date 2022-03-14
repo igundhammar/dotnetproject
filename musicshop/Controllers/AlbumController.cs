@@ -14,9 +14,11 @@ namespace musicshop.Controllers
     public class AlbumController : Controller
     {
         private readonly MusicDb _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public AlbumController(MusicDb context)
+        public AlbumController(MusicDb context, IWebHostEnvironment hostEnvironment)
         {
+            _hostEnvironment = hostEnvironment;
             _context = context;
         }
 
@@ -66,10 +68,24 @@ namespace musicshop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Year,Genre,ArtistName")] Album album)
+        public async Task<IActionResult> Create([Bind("Id,Name,Year,Genre,ArtistName,ImageFile")] Album album)
         {
             if (ModelState.IsValid)
             {
+                if (album.ImageFile != null)
+                {
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileName(album.ImageFile.FileName);
+
+                    album.ImagePath = fileName;
+
+                    string path = Path.Combine(wwwRootPath + "/images/" + fileName);
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await album.ImageFile.CopyToAsync(fileStream);
+                    }
+                }
                 _context.Add(album);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -100,7 +116,7 @@ namespace musicshop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Year,Genre,ArtistName")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Year,Genre,ArtistName,ImagePath")] Album album)
         {
             if (id != album.Id)
             {

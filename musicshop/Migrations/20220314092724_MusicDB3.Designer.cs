@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using musicshop.Data;
 
@@ -10,9 +11,10 @@ using musicshop.Data;
 namespace musicshop.Migrations
 {
     [DbContext(typeof(MusicDb))]
-    partial class MusicDbModelSnapshot : ModelSnapshot
+    [Migration("20220314092724_MusicDB3")]
+    partial class MusicDB3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");

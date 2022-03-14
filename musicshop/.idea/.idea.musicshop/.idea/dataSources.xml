@@ -13,7 +13,7 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="MusicDb" uuid="c1597909-1474-40c2-9cd8-09ce9ed8b19e">
+    <data-source source="LOCAL" name="MusicDb" uuid="430ccde0-3c81-4135-841f-794eb17b03e5">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
