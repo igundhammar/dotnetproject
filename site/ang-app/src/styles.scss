@@ -1,19 +1,37 @@
+@use '@angular/material' as mat;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@include mat.core();
 
 * {
   padding: 0;
   margin: 0;
-  max-width: 1200px;
   font-family: 'Roboto', sans-serif;
 }
 
 body {
-  background: #ffffff;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  background: url("assets/images/background.jpg") no-repeat right -120px bottom fixed;
+  min-height: 95vh;
+
 }
 main {
-  max-width: 80%;
-  margin: 0 auto;
-  background: #ffffff;
+
+  .homepage {
+    width: 60%;
+    margin: 0 auto;
+
+    p {
+      font-size: 1.2em;
+    }
+  }
+
+  section {
+    max-width: 70%;
+    margin: 0 auto;
+    background: #ffffff;
+  }
 
   nav {
     display: flex;
@@ -27,16 +45,67 @@ main {
 
   .container {
     position: relative;
+    margin-top: 3em;
+    padding: 1em;
+
     h1 {
-      text-decoration: underline;
-      margin-left: 2.5em;
+      text-align: center;
+      font-size: 2.5em;
     }
   }
 
   .font-weight-bold {
     font-weight: bold!important;
   }
+
+  .mat-button {
+    background-color: white;
+    font-size: 3em;
+    position: absolute;
+    top: -15px;
+  }
+
+  .mat-button:active {
+    font-size: 3.2em;
+  }
 }
+
+footer {
+  display: flex;
+  gap: 2em;
+  position: absolute;
+  bottom: 0;
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: #ff6a00;
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    section {
+      max-width: 95%;
+      margin: 0 auto;
+    }
+  }
+
+  footer {
+    display: block;
+    text-align: center;
+    position: relative;
+  }
+}
+
+
+
+
+
 
 
 

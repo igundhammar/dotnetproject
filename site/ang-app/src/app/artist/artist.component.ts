@@ -1,3 +1,7 @@
+/**
+ * Code generated and modified by Ida Gundhammar
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 

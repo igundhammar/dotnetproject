@@ -1,3 +1,6 @@
+/**
+ * Code NOT written by Ida Gundhammar
+ */
 import { Directive, Input, SimpleChanges, Renderer2, ElementRef, OnChanges } from '@angular/core';
 
 @Directive({

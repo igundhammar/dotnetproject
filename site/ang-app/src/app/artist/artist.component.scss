@@ -1,3 +1,4 @@
+/* Display all artists, flex and space evenly, style text */
 .artists {
   display: flex;
   justify-content: space-evenly;
@@ -10,24 +11,29 @@
       list-style: none;
 
       li {
-        margin: 1em 0;
-        text-decoration: underline;
+        margin-bottom: 1em;
+        font-size: 1.3em;
+        font-weight: bold;
 
-        button {
+        p {
           margin: 0 1em;
           font-size: 1.2rem;
           border: none;
           background: transparent;
           text-decoration: underline;
           cursor: pointer;
+          font-weight: normal;
+
+          &:hover {
+            color: #ff6a00;
+          }
         }
       }
     }
   }
 
+  /* The section of displaying the artists albums on click */
   .show {
-    width: 50%;
-
     .albumlist {
       display: flex;
       margin: 0.5em 0;
@@ -43,5 +49,24 @@
         margin-left: 0.5em;
       }
     }
+  }
+}
+
+/* Media queries to display artists as block */
+@media screen and (max-width: 1200px) {
+  .artists {
+    display: block;
+    text-align: center;
+
+    .artistlist {
+      margin: 0;
+    }
+  }
+}
+
+/* Make content wider on mobile */
+@media screen and (max-width: 500px) {
+  .artists {
+    width: 100%;
   }
 }

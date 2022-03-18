@@ -1,8 +1,15 @@
 <main>
-  <nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/album">Albums</a>
-    <a routerLink="/artist">Artists</a>
-  </nav>
+  <button mat-button [matMenuTriggerFor]="menu">☰</button>
+  <mat-menu #menu="matMenu">
+    <a routerLink="/home" mat-menu-item class="navitem">Home</a>
+    <a routerLink="/album" mat-menu-item class="navitem">Albums</a>
+    <a routerLink="/artist" mat-menu-item class="navitem">Artists</a>
+  </mat-menu>
+  <section>
   <router-outlet></router-outlet>
+  </section>
 </main>
+<footer>
+  <p><b>By Ida Gundhammar</b></p>
+  <p><a href="mailto:idgu2001@student.miun.se">idgu2001@student.miun.se</a></p>
+</footer>

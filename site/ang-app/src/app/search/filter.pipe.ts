@@ -1,5 +1,7 @@
 // filter.pipe.ts
-
+/**
+ * Code NOT written by Ida Gundhammar
+ */
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'appFilter' })

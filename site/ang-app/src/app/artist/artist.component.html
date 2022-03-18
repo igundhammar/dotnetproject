@@ -2,11 +2,11 @@
   <h1>Artists</h1>
   <section class="artists">
     <section class="artistlist">
-     <ul>
-          <li *ngFor="let artist of artists"><span>{{artist.name}}</span>
-            <button (click)="showAlbums(artist.name)">Show all albums</button>
-          </li>
-     </ul>
+      <ul>
+        <li *ngFor="let artist of artists"><span>{{artist.name}}</span>
+          <p><a (click)="showAlbums(artist.name)">Show all albums</a></p>
+        </li>
+      </ul>
     </section>
     <section class="show">
       <div class="albumlist" *ngFor="let album of albumsOfArtist">

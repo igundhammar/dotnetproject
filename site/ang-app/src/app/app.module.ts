@@ -10,6 +10,10 @@ import { ArtistComponent } from './artist/artist.component';
 import { FilterPipe} from "./search/filter.pipe";
 import { FormsModule } from "@angular/forms";
 import { Highlight } from "./search/highlight";
+import { MatMenuModule } from '@angular/material/menu';
+import {MatButtonModule} from "@angular/material/button";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 
 @NgModule({
   declarations: [
@@ -19,13 +23,17 @@ import { Highlight } from "./search/highlight";
     NotfoundComponent,
     ArtistComponent,
     FilterPipe,
-    Highlight
+    Highlight,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -33,3 +41,5 @@ import { Highlight } from "./search/highlight";
 
 export class AppModule {
 }
+
+
