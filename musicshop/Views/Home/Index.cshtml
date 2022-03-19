@@ -1,8 +1,22 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>This is a administration webpage for the Music Shop.</p>
+        <p>You can add new Albums or Artists.</p>
+        <p>You can also edit and delete existing Artists or Albums.</p>
+        <p>If you want to add a new Album, remember to check if the Artist already exists. If not, you will have to add them first.</p>
+    }
+    else
+    {
+        <p>You need access to administrate this page.</p>
+        <p>Please register and log in.</p>
+    }
 </div>
